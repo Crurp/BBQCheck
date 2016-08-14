@@ -1,1 +1,1 @@
-# scri[t-test
+# script-test
