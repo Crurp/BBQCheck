@@ -1,4 +1,7 @@
 #!/bin/bash
+
+#bbqcheck.sh
+
 ##### Wget from newwest bbq event listings on KCBS website
 #creates file separated by pipe delimeter
 #data format is as follows
@@ -26,6 +29,28 @@ sed 's/\<\/a\>/|/g' comma1.txt > comma2.txt
 sed 's/\<\/td//g' comma2.txt > comma3.txt
 sed 's/\<br \///g' comma3.txt > FinalCSV.txt
 #Final cleanup and push to final csv file
+
+#-----------------------------------------------------------
+
+#Parse out states and check for desirable state events
+
+while read input; 			#reads in FinalCSV.txt file for parsing
+do	
+	location=$(echo $input | tail -c 3)		#extracts the last 3 characters being state code and blank space
+
+	case $location in		#casenotation to check for desireabel states
+		"tn" | "TN")
+			echo "event in Tennessee"
+		;;
+		"md" | "MD")
+			echo "event in Maryland"
+		;;
+		"ca" | "CA")
+			echo "event in California"
+	esac	
+done <FinalCSV.txt
+
+
 
 #-----------------------------------------------------------
 #clean up txt files below
