@@ -39,14 +39,12 @@ do
 	location=$(echo $input | tail -c 3)		#extracts the last 3 characters being state code and blank space
 
 	case $location in		#casenotation to check for desireabel states
-		"tn" | "TN")
-			echo "event in Tennessee"
-		;;
 		"md" | "MD")
-			echo "event in Maryland"
+			mail -s "BBQ Judging Event Notification" ethanchow@gmail.com <<< "New Event listed in Maryland"
 		;;
 		"ca" | "CA")
 			echo "event in California"
+		;;
 	esac	
 done <FinalCSV.txt
 
