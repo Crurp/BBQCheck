@@ -38,14 +38,14 @@ while read input; 			#reads in FinalCSV.txt file for parsing
 do	
 	location=$(echo $input | tail -c 3)		#extracts the last 3 characters being state code and blank space
 
-	case $location in		#casenotation to check for desireabel states
+	case $location in		#casenotation to check for desirable states
 		"md" | "MD")
-			mail -s "BBQ Judging Event Notification" ethanchow@gmail.com <<< "New Event listed in Maryland"
-		;;
+			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in Maryland! $input" && echo $input >> exclude.txt
+		;; #Maryland (md or MD) in location variable with email notification
 		"ca" | "CA")
-			echo "event in California"
-		;;
-	esac	
+			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in California! $input"
+		;; #California (ca or CA) in location variable with email notification
+	esac	#End case 
 done <FinalCSV.txt
 
 
