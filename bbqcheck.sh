@@ -40,10 +40,19 @@ do
 
 	case $location in		#casenotation to check for desirable states
 		"md" | "MD" | "mD" | "Md")
-			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in Maryland! $input" && echo $input >> exclude.txt
+		clear
+			if ! grep -e "$input" exclude.txt; then
+    			echo -e "New Event listed in Maryland! \n \n $input \n \n Search for it here: http://www.kcbs.us/events/new" | mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com && echo $input >> exclude.txt
+			fi
 		;; #Maryland (md or MD) in location variable with email notification
+
+
+
 		"ca" | "CA" | "cA" | "Ca")
-			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in California! $input"
+		clear
+			if ! grep -e "$input" exclude.txt; then
+    			echo -e "New Event listed in California! \n \n $input \n \n Search for it here: http://www.kcbs.us/events/new" | mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com && echo $input >> exclude.txt
+			fi
 		;; #California (ca or CA) in location variable with email notification
 	esac	#End case 
 done <FinalCSV.txt
