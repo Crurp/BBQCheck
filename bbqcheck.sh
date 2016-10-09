@@ -39,10 +39,10 @@ do
 	location=$(echo $input | tail -c 3)		#extracts the last 3 characters being state code and blank space
 
 	case $location in		#casenotation to check for desirable states
-		"md" | "MD")
+		"md" | "MD" | "mD" | "Md")
 			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in Maryland! $input" && echo $input >> exclude.txt
 		;; #Maryland (md or MD) in location variable with email notification
-		"ca" | "CA")
+		"ca" | "CA" | "cA" | "Ca")
 			mail -s "BBQ Judging Event Notification" randallvstevens@gmail.com <<< "New Event listed in California! $input"
 		;; #California (ca or CA) in location variable with email notification
 	esac	#End case 
