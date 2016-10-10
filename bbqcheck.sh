@@ -66,7 +66,7 @@ rm -rf trim1.txt
 rm -rf cleanenough.txt
 
 rm -rf DraftFinal.txt
-rm -rf FinalCSV.txt
+
 
 rm -rf comma1.txt
 rm -rf comma2.txt
